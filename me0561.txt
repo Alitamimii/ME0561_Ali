@@ -1,8 +1,13 @@
-import getpass
-import sys
+def change_password():
+    new_password = getpass.getpass("Enter your new password: ")
+    confirm_password = getpass.getpass("Confirm your new password: ")
 
-# Predefined password (you can change this)
-correct_password = "securepassword123"
+    if new_password == confirm_password:
+        global correct_password
+        correct_password = new_password
+        print("Password changed successfully.")
+    else:
+        print("Passwords do not match. Password change failed.")
 
 def password_entry_system():
     print("Welcome to the Password Entry System")
@@ -15,6 +20,9 @@ def password_entry_system():
         # Check if the entered password matches the predefined password
         if password == correct_password:
             print("Access granted.")
+            change_password_option = input("Would you like to change your password? (yes/no): ")
+            if change_password_option.lower() == "yes":
+                change_password()
             break
         else:
             print("Access denied. Incorrect password.")
