@@ -1,19 +1,28 @@
 import getpass
+import sys
 
 # Predefined password (you can change this)
 correct_password = "securepassword123"
 
 def password_entry_system():
     print("Welcome to the Password Entry System")
+    attempts = 0
 
-    # Prompt the user to enter the password
-    password = getpass.getpass("Enter your password: ")
+    while attempts < 3:
+        # Prompt the user to enter the password
+        password = getpass.getpass("Enter your password: ")
 
-    # Check if the entered password matches the predefined password
-    if password == correct_password:
-        print("Access granted.")
-    else:
-        print("Access denied. Incorrect password.")
+        # Check if the entered password matches the predefined password
+        if password == correct_password:
+            print("Access granted.")
+            break
+        else:
+            print("Access denied. Incorrect password.")
+            attempts += 1
+
+    if attempts == 3:
+        print("You have exceeded the maximum number of attempts. Exiting...")
+        sys.exit(1)
 
 # Run the password entry system
 if __name__ == "__main__":
