@@ -1,0 +1,20 @@
+import getpass
+
+# Predefined password (you can change this)
+correct_password = "securepassword123"
+
+def password_entry_system():
+    print("Welcome to the Password Entry System")
+
+    # Prompt the user to enter the password
+    password = getpass.getpass("Enter your password: ")
+
+    # Check if the entered password matches the predefined password
+    if password == correct_password:
+        print("Access granted.")
+    else:
+        print("Access denied. Incorrect password.")
+
+# Run the password entry system
+if __name__ == "__main__":
+    password_entry_system()
